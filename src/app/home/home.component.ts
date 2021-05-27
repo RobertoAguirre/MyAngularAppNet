@@ -9,15 +9,29 @@ import { ApiService } from '../services/api.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private apiService :ApiService
+    private apiService: ApiService
 
   ) { }
 
   ngOnInit(): void {
   }
 
-  CallARobot(){
+  CallARobot() {
     this.apiService.localTest();
+  }
+
+  InsertNewItem() {
+    let task =
+    {
+      "name": "Go to work",
+      "isComplete": false
+    }
+
+    this.apiService.saveToDoItem(task).subscribe((response) => {
+      let _response;
+      _response = response;
+    });
+
   }
 
 }

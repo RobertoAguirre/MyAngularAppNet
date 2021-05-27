@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class ApiService {
 
 
-  serviceUrl = 'http://localhost:40000';
+  serviceUrl = 'https://localhost:5001/api';
 
   constructor(
     private http: HttpClient
@@ -38,6 +38,16 @@ export class ApiService {
   public testGet(){
     try{
       return this.http.get(this.serviceUrl + '/api/hello');
+    }catch(ex){
+      console.log(ex);
+      return ex;
+    }
+  }
+  
+  
+  public saveToDoItem(data){
+    try{
+      return this.http.post(this.serviceUrl + '/TodoItems',data);
     }catch(ex){
       console.log(ex);
       return ex;
